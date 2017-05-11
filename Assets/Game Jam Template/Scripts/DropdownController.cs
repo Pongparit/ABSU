@@ -6,7 +6,7 @@ public class DropdownController : MonoBehaviour {
 
   public Dropdown dropdown;
   public Text selectCount;
-  List<string> number = new List<string>() {"Please Select Number of players", "1", "2", "3", "4"};
+  List<string> number = new List<string>() { "2", "3", "4"};
 
   public void Dropdown_IndexChanged(int index) {
     selectCount.text = number[index];

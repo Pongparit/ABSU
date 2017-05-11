@@ -1,48 +1,66 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI ;
 
 public class Player : MonoBehaviour {
 
 	//Default var
-	private int id ;
-	float money ;
-	string playerName ;
-	private Inventory inventory ;
+	// private int id ;
+	// float money ;
+	// string playerName ;
+
 	private Rigidbody rb;
 	private int currentFieldId ;
+
+	public int buyQouta = 3 ;
+
+	public bool isMissNextTurn = false  ;
+
+	public Transform playerCamera;
+
+	public List<DefaultField> owning = new List<DefaultField>();
+
+
+	public PlayerUI ui ;
+	private int netWorth = 0;
+
+	public bool isWin = false ;
+
 	private Animator anim;
+	int turnHash = Animator.StringToHash("hasTurn");
+	int aroundHash = Animator.StringToHash("hasAround");
 	private AnimatorStateInfo currentBaseState;
 	string stateGet ;
-	bool isRo;
 
-	private bool isPastStartPoint ;
-
-	public Camera playerCamera;
 
 
 	void Start (){
 		rb = GetComponent<Rigidbody> ();
-		anim = GetComponent<Animator>();
-
-
+		this.netWorth = money ;
+		ui.SetUp(this.playerName,this.money,this.netWorth);
 //		playerCamera = GetComponent<Camera> ();
+		anim = GetComponent<Animator>();
 	}
 
-  void FixedUpdate () {
+
+	void FixedUpdate () {
 		if (stateGet == "walk"){
-			Debug.Log("kuy");
 		 anim.SetBool("isMove", true);
 	 }
 	 if (stateGet == "idle") {
 		 anim.SetBool("isMove", false);
 	 }
+	 if (stateGet == "turnRight") {
 
-	 if (isRo == true) {
-		 transform.Rotate(0, 90, 0);
-		 isRo = false;
+		 anim.SetTrigger(turnHash);
+		 stateGet = "walk";
 	 }
+	 if (stateGet == "turnAround") {
 
+		 anim.SetTrigger(aroundHash);
+		 stateGet = "idle";
+	 }
 
 	}
 
@@ -57,15 +75,6 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	public bool isRotate {
-		get{
-			return this.isRo;
-		}
-
-		set{
-			this.isRo = value;
-		}
-	}
 
 	public Rigidbody rigidBody{
 		get{
@@ -77,35 +86,14 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	public int ID{
-		get{
-			return id;
-		}
-		set{
-			this.id = value;
-		}
-	}
+	public int id ;
 
-	public float Money {
+	public int money ;
 
-		get {
-			return this.money;
-		}
-		set {
-			this.money = value;
-		}
-	}
+	public  string playerName ;
 
-	public string PlayerName {
-		get{
-			return this.playerName;
-		}
-		set{
-			this.playerName = value;
-		}
-	}
 
-	public int FieldId {
+	public int fieldId {
 		get{
 			return this.currentFieldId;
 		}
@@ -114,9 +102,87 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	public bool isPastStart {
-		get{return this.isPastStartPoint ; }
-		set{this.isPastStartPoint = value ;}
+	public bool isPastStart ;
+
+	public Material color { get; set; }
+
+	public void AddField(DefaultField field){
+		this.owning.Add(field);
+	}
+
+	public void removeField(DefaultField field){
+		this.owning.Remove(field);
+	}
+
+	private void updateMoney (){
+		ui.updateMoney(this.money);
+	}
+
+	private void updateNetWorth(){
+		netWorth = money;
+		foreach(DefaultField g in this.owning){
+			netWorth += g.getBuyOutPrice();
+		}
+		ui.updateNetWorth(this.netWorth);
+	}
+
+
+	public int getSeedNetWorth(){
+		int temp  = 0 ;
+		foreach(DefaultField f in owning){
+			temp += f.seed.cost ;
+		}
+		return (int)(temp*0.1) ;
+	}
+
+	public void updateUI(){
+		updateMoney ();
+		updateNetWorth();
+	}
+
+	public bool isOwnMarket(int zone){
+
+		foreach (DefaultField f in owning){
+			if (f.type == FieldType.marketField && f.zone == zone){
+				return true ;
+			}
+		}
+		return false;
+
+	}
+
+	public void changeMultiPlyer (int zone,int multiply){
+		foreach(DefaultField f in owning){
+			if(f.zone == zone){
+				f.LocalMultiPlyer = multiply ;
+			}
+		}
+	}
+
+
+	public void checkFactoryWinner(){
+		int count = 0 ;
+		foreach(DefaultField f in owning){
+			if (f.type == FieldType.factoryField){
+				count++;
+			}
+		}
+		if (count == 4){
+			isWin =true ;
+		}
+	}
+
+	public void checkLineWinner(int zone){
+		int count = 0 ;
+
+		foreach(DefaultField f in owning){
+			if (f.zone == zone){
+				count++;
+			}
+		}
+		if(count == 8){
+			isWin =true ;
+		}
 	}
 
 

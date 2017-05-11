@@ -190,7 +190,7 @@ ModelImporter:
       name: idle
       takeName: _195_IdleR_To_IdleL_2
       firstFrame: 162
-      lastFrame: 1218
+      lastFrame: 367
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -198,7 +198,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 1
       loopBlendPositionY: 0
       loopBlendPositionXZ: 1

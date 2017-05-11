@@ -39,59 +39,68 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>E:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>E:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Game Jam Template\Scripts\DontDestroy.cs" />
-     <Compile Include="Assets\Game Jam Template\Scripts\DropdownController.cs" />
-     <Compile Include="Assets\Game Jam Template\Scripts\EventSystemChecker.cs" />
-     <Compile Include="Assets\Game Jam Template\Scripts\Pause.cs" />
-     <Compile Include="Assets\Game Jam Template\Scripts\PlayMusic.cs" />
-     <Compile Include="Assets\Game Jam Template\Scripts\QuitApplication.cs" />
-     <Compile Include="Assets\Game Jam Template\Scripts\SetAudioLevels.cs" />
-     <Compile Include="Assets\Game Jam Template\Scripts\ShowPanels.cs" />
-     <Compile Include="Assets\Game Jam Template\Scripts\StartOptions.cs" />
+     <Compile Include="Assets\FreeFly.cs" />
+     <Compile Include="Assets\LogManager.cs" />
+     <Compile Include="Assets\LogObjectPool.cs" />
+     <Compile Include="Assets\PlayerUI.cs" />
+     <Compile Include="Assets\SimpleObjectPool.cs" />
+     <Compile Include="Assets\_Scripts\Base\Action.cs" />
      <Compile Include="Assets\_Scripts\Base\Enum.cs" />
      <Compile Include="Assets\_Scripts\Base\Field.cs" />
      <Compile Include="Assets\_Scripts\Base\RandomNum.cs" />
-     <Compile Include="Assets\_Scripts\Base\Useable.cs" />
-     <Compile Include="Assets\_Scripts\Controller\CameraController.cs" />
      <Compile Include="Assets\_Scripts\Controller\GameController.cs" />
      <Compile Include="Assets\_Scripts\Controller\GameManager.cs" />
      <Compile Include="Assets\_Scripts\Controller\mainCameraController.cs" />
      <Compile Include="Assets\_Scripts\Model\DefaultField.cs" />
+     <Compile Include="Assets\_Scripts\Model\Dice.cs" />
      <Compile Include="Assets\_Scripts\Model\EventField.cs" />
-     <Compile Include="Assets\_Scripts\Model\Inventory.cs" />
+     <Compile Include="Assets\_Scripts\Model\Item.cs" />
      <Compile Include="Assets\_Scripts\Model\Player.cs" />
+     <Compile Include="Assets\_Scripts\Model\Province.cs" />
      <Compile Include="Assets\_Scripts\Model\Seed.cs" />
-     <Compile Include="Assets\test.cs" />
-     <None Include="Assets\_Scripts\MHImport\Shaders\Eye.shader" />
-     <None Include="Assets\_Scripts\MHImport\ReadMe.txt" />
-     <None Include="Assets\Game Jam Template\Fonts\OpenSans\License!.txt" />
-     <None Include="Assets\_Scripts\MHImport\Shaders\Hair.shader" />
-     <None Include="Assets\_Scripts\MHImport\Shaders\Clothes.shader" />
-     <None Include="Assets\Game Jam Template\GameJamTemplateReadMe.txt" />
+     <Compile Include="Assets\_Scripts\Model\SeedContainer.cs" />
+     <Compile Include="Assets\_Scripts\Model\SeedModelHolder.cs" />
+     <Compile Include="Assets\_Scripts\UI\BuyOut.cs" />
+     <Compile Include="Assets\_Scripts\UI\DiceUI.cs" />
+     <Compile Include="Assets\_Scripts\UI\LuckyDraw.cs" />
+     <Compile Include="Assets\_Scripts\UI\ShopButton.cs" />
+     <Compile Include="Assets\_Scripts\UI\ShopScrollList.cs" />
+     <None Include="Assets\Province.txt" />
+     <None Include="Assets\SeedContainer.xml" />
+     <None Include="Assets\DefaulField.xml" />
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>E:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>E:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.PlaymodeTestsRunner">
- <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll</HintPath>
+ <HintPath>E:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>E:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
- <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ <HintPath>E:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.VR">
- <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
+ <HintPath>E:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.Cecil">
+ <HintPath>E:/Program Files (x86)/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+ <HintPath>E:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions.Common">
+ <HintPath>E:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

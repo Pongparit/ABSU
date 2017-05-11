@@ -4,9 +4,15 @@ using UnityEngine;
 
 public enum FieldType {
 	defaultField,
+	factoryField,
+	marketField,
 	startField,
-	cardField,
-	forestField
+	TrainField,
+	forestField,
+
+	goToForestField,
+
+	LotteryField
 }
 
 public enum ActionType {

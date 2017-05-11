@@ -1,36 +1,78 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class DefaultField : Field {
 
 
-	public int cost ;
 
-	public Player owner ; 
+	public Transform plantArea;
 
-	public FieldType type = (int) FieldType.defaultField;
+	public int cost = 0 ;
 
-	
-	public int Cost{
-		get{
-			return this.cost;
-		}
-		set{
-			this.cost = value; 
+
+	public Seed seed ;
+
+	// public FieldType type = (int) FieldType.defaultField;
+
+	public int zone ;
+
+	public Text ProvinceText;
+	public Text StandCostText;
+
+	public Text OwningText;
+
+	public Text MultiPlyerText;
+
+	public int LocalMultiPlyer = 1;
+
+
+
+
+	public Player owner ;
+
+	public override string ToString(){
+		return this.name ;
+	}
+
+	public void removePlant(){
+		foreach (Transform t in plantArea){
+			Destroy(t.gameObject);
 		}
 	}
 
-	public Player Owner {
 
-		get{
-			return this.owner; 
+	public void updatePlantModel(SeedModelHolder seed){
+		if(this.seed != null){
+			foreach (Transform t in plantArea){
+				Destroy(t.gameObject);
+			}
 		}
 
-		set{
-			this.owner = owner; 
-		}
+		GameObject obj = (GameObject) Instantiate(seed.model,this.plantArea.position,seed.model.transform.rotation);
+		obj.transform.SetParent(this.plantArea);
 
 	}
+	//Need stock multiplyer
+	public int getStandCost(){
+		return ((this.cost/2)+this.seed.getStandCost(this.zone))
+		*GameController.globalMultiplyer*LocalMultiPlyer;
+	}
+	//Need Market Multiplyer
+	public int getBuyOutPrice(){
+		return (int)((this.cost+this.seed.cost)*GameController.globalMultiplyer*LocalMultiPlyer*1.3) ;
+	}
+
+	public void updateUI(){
+		Debug.Log("Update ui");
+		this.ProvinceText.text = name;
+		this.StandCostText.text = (owner == null)?"Buy Price "+cost.ToString()+" Baht":"StandPrice "+getStandCost().ToString()+" Baht";
+		this.OwningText.text = (owner == null)? "No Owner":owner.name ;
+		this.MultiPlyerText.text = "X"+LocalMultiPlyer.ToString();
+	}
+
+
+
+
+
 
 }
