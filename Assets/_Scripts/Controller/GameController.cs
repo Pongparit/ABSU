@@ -126,15 +126,27 @@ public class GameController : MonoBehaviour {
 		p1g = GameObject.Find("p1").GetComponent<Text>();
 		Debug.Log(p1g.text);
 		p1text = p1g.text;
+		if (p1text == ""){
+			p1text = "1";
+		}
 		p1 = int.Parse(p1text);
 		p2g = GameObject.Find("p2").GetComponent<Text>();
 		p2text = p2g.text;
+		if (p2text == ""){
+			p2text = "1";
+		}
 		p2 = int.Parse(p2text);
 		p3g = GameObject.Find("p3").GetComponent<Text>();
 		p3text = p3g.text;
+		if (p3text == ""){
+			p3text = "1";
+		}
 		p3 = int.Parse(p3text);
 		p4g = GameObject.Find("p4").GetComponent<Text>();
 		p4text = p4g.text;
+		if (p4text == ""){
+			p4text = "1";
+		}
 		p4 = int.Parse(p4text);
 
 //		Debug.Log((cameraController == null) ? "null" : "not null");
@@ -220,7 +232,7 @@ public class GameController : MonoBehaviour {
 		yield  return StartCoroutine(aTob(players[currentPlayer], field [players[currentPlayer].fieldId-1].transform.position));
 
 		// Move Player
-		yield return Move(currentPlayer, diceNum);
+		yield return Move(currentPlayer, 30);
 
 		//Check Field and Field Action
 		yield return StartCoroutine(checkField ()) ;
@@ -639,6 +651,7 @@ public class GameController : MonoBehaviour {
 
 	IEnumerator goToForestEvent(){
 		players [currentPlayer].stateAnimate = "turnAround";
+		players [currentPlayer].transform.Rotate(0, 45, 0);
 		int currentField = players[currentPlayer].fieldId;
 
 		while(field [currentField-1].type != FieldType.forestField){
