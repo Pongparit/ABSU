@@ -232,7 +232,7 @@ public class GameController : MonoBehaviour {
 		yield  return StartCoroutine(aTob(players[currentPlayer], field [players[currentPlayer].fieldId-1].transform.position));
 
 		// Move Player
-		yield return Move(currentPlayer, 30);
+		yield return Move(currentPlayer, diceNum);
 
 		//Check Field and Field Action
 		yield return StartCoroutine(checkField ()) ;
@@ -350,7 +350,6 @@ public class GameController : MonoBehaviour {
 
 			if (currentField == 1 || currentField == 11 || currentField == 21 || currentField == 31 ) {
 				players [currentPlayer].stateAnimate = "turnRight";
-				players [currentPlayer].transform.Rotate(0, 3, 0);
 				yield return new WaitForSeconds (0.1f);
 			}
 
@@ -651,7 +650,7 @@ public class GameController : MonoBehaviour {
 
 	IEnumerator goToForestEvent(){
 		players [currentPlayer].stateAnimate = "turnAround";
-		players [currentPlayer].transform.Rotate(0, 45, 0);
+		players [currentPlayer].transform.Rotate(0, 15, 0);
 		int currentField = players[currentPlayer].fieldId;
 
 		while(field [currentField-1].type != FieldType.forestField){
@@ -669,7 +668,7 @@ public class GameController : MonoBehaviour {
 
 	IEnumerator TrainEvent(){
 		players [currentPlayer].stateAnimate = "turnAround";
-		players [currentPlayer].transform.Rotate(0, 45, 0);
+		players [currentPlayer].transform.Rotate(0, 15, 0);
 
 		int currentField = players[currentPlayer].fieldId;
 		currentField = (currentField + 20 ) % boardLength;
